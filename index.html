@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Saqya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Gochi+Hand&family=Tilt+Neon&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Tilt Neon", sans-serif;
+      }
+      .font-accent {
+        font-family: "Fredoka", sans-serif;
+      }
+      .font-latin {
+        font-family: "Gochi Hand", cursive;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- cover undangan -->
+    <section
+      class="overflow-hidden relative text-center mx-auto h-screen w-full max-w-lg flex items-center justify-center flex-col bg-cover bg-center"
+      style="background-color: #fdf4ef"
+    >
+      <div
+        class="h-full w-full text-center mx-auto h-screen w-full flex items-center justify-center flex-col"
+        style="
+          position: relative;
+          z-index: 99;
+          background-image: url('assets/bg.webp');
+          background-size: cover;
+          background-repeat: no-repeat;
+        "
+      >
+        <div
+          class="ornament"
+          style="position: absolute; top: -10px; right: 0; display: flex"
+        >
+          <img src="assets/ornament-10.png" alt="" style="padding-top: 60px" />
+        </div>
+        <div
+          class="ornament"
+          style="position: absolute; top: 0; right: 0; display: flex"
+        >
+          <img src="assets/ornament-1.png" alt="" />
+        </div>
+        <div
+          class="mx-auto mb-4 size-48 rounded-full aspect-square overflow-hidden"
+          style="position: relative"
+        >
+          <img
+            class="size-full object-cover"
+            src="image/gallery_8.jpg"
+            alt=""
+            height="150"
+            width="150"
+          />
+        </div>
+        <div
+          class="mb-4 text-7xl font-bold font-accent"
+          data-aos="zoom-in"
+          data-aos-duration="3000"
+        >
+          Baby's
+        </div>
+        <div class="mb-16" data-aos="zoom-in" data-aos-duration="3000">
+          is turning one!
+        </div>
+        <div data-aos="zoom-in" data-aos-duration="3000">
+          <div class="mb-2">Kepada Yth <br />Bapak/Ibu/Saudara/i</div>
+          <div class="mb-6 font-bold">Nama Tamu</div>
+          <div style="z-index: 999; position: absolute">
+            <a
+              id="btnBuka"
+              href="#isiUndangan"
+              class="bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700"
+              >Buka Undangan</a
+            >
+          </div>
+          <div
+            class="ornament"
+            style="z-index: -1; right: 0; bottom: 0; position: absolute"
+          >
+            <img src="assets/bm-55.png" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document
+        .getElementById("btnBuka")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document.getElementById("isiUndangan").classList.remove("hidden");
+          document
+            .getElementById("btnBuka")
+            .scrollIntoView({ behavior: "smooth" });
+
+          const audio = document.getElementById("bg-audio");
+          audio.play();
+        });
+    </script>
+    <!-- isi undangan -->
+    <div
+      id="isiUndangan"
+      class="hidden relative text-center mx-auto w-full max-w-lg flex items-center justify-center flex-col"
+      style="
+        background-image: url('assets/ornament-99.jpg');
+        background-size: cover;
+        background-repeat: repeat;
+      "
+    >
+      <section class="px-6 py-12 w-full relative">
+        <div class="mx-auto w-full max-w-[26rem]">
+          <p class="mx-auto max-w-80 text-3xl font-bold">WELCOME TO</p>
+          <div
+            class="text-8xl font-bold font-accent text-blue-500"
+            data-aos="zoom-in"
+            data-aos-duration="3000"
+          >
+            1st
+          </div>
+          <p class="mx-auto max-w-80 mb-6 text-3xl font-bold">
+            SAQYA BIRTHDAY PARTY
+          </p>
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <div class="text-7xl font-bold">20</div>
+            <div class="text-left text-2xl font-bold">
+              <div>SELASA</div>
+              <div>MEI 2025</div>
+            </div>
+            <div class="h-20 w-0.5 bg-blue-500"></div>
+            <div class="text-left text-2xl font-bold">
+              <div>14.00 WITA</div>
+              <div>s.d SELESAI</div>
+            </div>
+          </div>
+          <div
+            id="countDown"
+            class="grid grid-cols-4 gap-2 mb-8"
+            data-aos="fade-up"
+            data-aos-duration="3000"
+          >
+            <div class="bg-blue-500 text-white p-3 rounded-md">
+              <div id="day" class="text-2xl">19</div>
+              <div class="text-sm">Hari</div>
+            </div>
+            <div class="bg-blue-500 text-white p-3 rounded-md">
+              <div id="hour" class="text-2xl">14</div>
+              <div class="text-sm">Jam</div>
+            </div>
+            <div class="bg-blue-500 text-white p-3 rounded-md">
+              <div id="minute" class="text-2xl">00</div>
+              <div class="text-sm">Menit</div>
+            </div>
+            <div class="bg-blue-500 text-white p-3 rounded-md">
+              <div id="second" class="text-2xl">00</div>
+              <div class="text-sm">Detik</div>
+            </div>
+          </div>
+
+          <h2 class="font-latin text-4xl mb-4">Alamat</h2>
+          <p class="mb-3">
+            Jl. Pasar Lama. Nene Omo, Desa Katupat, Kec. Togean, Kab. Tojo
+            Una-Una, Sulawesi Tengah 94686.
+          </p>
+          <a
+            href="https://maps.app.goo.gl/jjcuHVxGqinijE988"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block mb-8 bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700"
+            >Buka Google Maps</a
+          >
+        </div>
+      </section>
+
+      <section class="px-6 py-12 w-full relative">
+        <div class="mx-auto w-full max-w-[26rem]">
+          <h2 class="font-latin text-4xl mb-4">Our Memories</h2>
+
+          <div class="galeri">
+            <img
+              src="assets/ornament-11.png"
+              style="
+                position: absolute;
+                width: 10%;
+                height: 7%;
+                left: 40px;
+                top: 80px;
+              "
+            />
+            <div class="grid grid-cols-2 gap-2 mb-2">
+              <div class="aspect-square overflow-hidden">
+                <img
+                  class="size-full object-cover"
+                  src="image/gallery_11.jpg"
+                  alt=""
+                  height="150"
+                  width="150"
+                />
+              </div>
+              <div class="aspect-square overflow-hidden">
+                <img
+                  class="size-full object-cover"
+                  src="image/gallery_10.jpg"
+                  alt=""
+                  height="150"
+                  width="150"
+                />
+              </div>
+              <div class="aspect-square overflow-hidden">
+                <img
+                  class="size-full object-cover"
+                  src="image/gallery_6.jpg"
+                  alt=""
+                  height="150"
+                  width="150"
+                />
+              </div>
+              <div class="aspect-square overflow-hidden">
+                <img
+                  class="size-full object-cover"
+                  src="image/gallery_7.jpg"
+                  alt=""
+                  height="150"
+                  width="150"
+                />
+              </div>
+              <div class="aspect-square overflow-hidden">
+                <img
+                  class="size-full object-cover"
+                  src="image/gallery_8.jpg"
+                  alt=""
+                  height="150"
+                  width="150"
+                />
+              </div>
+              <div class="aspect-square overflow-hidden">
+                <img
+                  class="size-full object-cover"
+                  src="image/gallery_9.jpg"
+                  alt=""
+                  height="150"
+                  width="150"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="px-6 py-12 w-full min-h-[40rem] text-center flex flex-col justify-center items-center"
+      >
+        <p
+          class="mx-auto max-w-80 text-5xl font-latin font-bold text-black-500"
+        >
+          Terima Kasih<br />Atas perhatian anda<br />Semoga kita bertemu<br />di
+          acara tersebut
+        </p>
+        <div
+          class="ornament"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: absolute;
+            gap: 100px;
+            right: 0;
+            bottom: 0;
+          "
+        >
+          <img src="assets/ornament-8.png" style="width: 45%; height: 45%" />
+          <img src="assets/ornament-9.png" style="width: 20%; height: 20%" />
+        </div>
+      </section>
+    </div>
+    <script>
+      let tanggalAcara = new Date("May 20, 2025 14:00:00").getTime();
+      let x = setInterval(function () {
+        let sekarang = new Date().getTime();
+
+        let selisih = tanggalAcara - sekarang;
+
+        let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+        let jam = Math.floor(
+          (selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+        let detik = Math.floor((selisih % (1000 * 60)) / 1000);
+
+        document.getElementById("day").innerHTML = hari;
+        document.getElementById("hour").innerHTML = jam;
+        document.getElementById("minute").innerHTML = menit;
+        document.getElementById("second").innerHTML = detik;
+
+        if (selisih < 0) {
+          clearInterval(x);
+          document.getElementById("day").innerHTML = "00";
+          document.getElementById("hour").innerHTML = "00";
+          document.getElementById("minute").innerHTML = "00";
+          document.getElementById("second").innerHTML = "00";
+        }
+      }, 1000);
+    </script>
+    <!-- lagu start -->
+    <audio loop id="bg-audio">
+      <source src="official-music-video-ik8fdlt45w4.mp3" type="audio/mpeg" />
+    </audio>
+    <!-- lagu end -->
+  </body>
+</html>
