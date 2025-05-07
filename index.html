@@ -266,7 +266,7 @@
         <p
           class="mx-auto max-w-80 text-5xl font-latin font-bold text-black-500"
         >
-          Terima Kasih<br />Atas perhatian anda<br />Semoga kita bertemu<br />di
+          Terima Kasih<br />Atas perhatian anda,<br />Semoga kita bertemu<br />di
           acara tersebut
         </p>
         <div
@@ -316,8 +316,19 @@
     </script>
     <!-- lagu start -->
     <audio loop id="bg-audio">
-      <source src="official-music-video-ik8fdlt45w4.mp3" type="audio/mpeg" />
+      <source src="official-music-video-12345qwer.mp3" type="audio/mpeg" />
     </audio>
     <!-- lagu end -->
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const namaTamu = urlParams.get("nama");
+
+      if (namaTamu) {
+        const elemenNamaTamu = document.querySelector(".font-bold");
+        if (elemenNamaTamu) {
+          elemenNamaTamu.textContent = decodeURIComponent(namaTamu);
+        }
+      }
+    </script>
   </body>
 </html>
