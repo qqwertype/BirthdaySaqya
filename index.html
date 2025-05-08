@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Birthday Saqya</title>
+    <title>Saqya's 1st Birthday</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,6 +24,96 @@
       .font-latin {
         font-family: "Gochi Hand", cursive;
       }
+
+      /* Animation classes */
+      .fade-in {
+        animation: fadeIn 1.5s ease-in;
+      }
+      .slide-up {
+        animation: slideUp 1s ease-out;
+      }
+      .bounce-in {
+        animation: bounceIn 1s ease;
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Balloon animations */
+      .balloon {
+        position: absolute;
+        animation: float 6s ease-in-out infinite;
+      }
+      .balloon:nth-child(odd) {
+        animation-duration: 8s;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+
+      /* Image hover effects */
+      .gallery-img {
+        transition: transform 0.3s ease;
+      }
+      .gallery-img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Sound control button */
+      .sound-control {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
     </style>
   </head>
   <body class="bg-white">
@@ -33,7 +123,7 @@
       style="background-color: #fdf4ef"
     >
       <div
-        class="h-full w-full text-center mx-auto h-screen w-full flex items-center justify-center flex-col"
+        class="h-full w-full text-center mx-auto flex items-center justify-center flex-col"
         style="
           position: relative;
           z-index: 99;
@@ -42,6 +132,26 @@
           background-repeat: no-repeat;
         "
       >
+        <!-- Balloons for decoration -->
+        <div class="balloon" style="top: 10%; left: 10%">
+          <svg width="40" height="60" viewBox="0 0 40 60">
+            <path
+              d="M20 0C9 0 0 9 0 20C0 31 9 40 20 40C31 40 40 31 40 20C40 9 31 0 20 0Z"
+              fill="#FF9ED8"
+            />
+            <path d="M20 40L18 60H22L20 40Z" fill="#666" />
+          </svg>
+        </div>
+        <div class="balloon" style="top: 5%; right: 15%">
+          <svg width="30" height="50" viewBox="0 0 30 50">
+            <path
+              d="M15 0C6.75 0 0 6.75 0 15C0 23.25 6.75 30 15 30C23.25 30 30 23.25 30 15C30 6.75 23.25 0 15 0Z"
+              fill="#87CEFA"
+            />
+            <path d="M15 30L13.5 50H16.5L15 30Z" fill="#666" />
+          </svg>
+        </div>
+
         <div
           class="ornament"
           style="position: absolute; top: -10px; right: 0; display: flex"
@@ -55,35 +165,27 @@
           <img src="assets/ornament-1.png" alt="" />
         </div>
         <div
-          class="mx-auto mb-4 size-48 rounded-full aspect-square overflow-hidden"
+          class="mx-auto mb-4 size-48 rounded-full aspect-square overflow-hidden bounce-in"
           style="position: relative"
         >
           <img
             class="size-full object-cover"
             src="image/gallery_8.jpg"
-            alt=""
+            alt="Saqya"
             height="150"
             width="150"
           />
         </div>
-        <div
-          class="mb-4 text-7xl font-bold font-accent"
-          data-aos="zoom-in"
-          data-aos-duration="3000"
-        >
-          Baby's
-        </div>
-        <div class="mb-16" data-aos="zoom-in" data-aos-duration="3000">
-          is turning one!
-        </div>
-        <div data-aos="zoom-in" data-aos-duration="3000">
+        <div class="mb-4 text-7xl font-bold font-accent fade-in">Saqya's</div>
+        <div class="mb-16 text-2xl slide-up">is turning one!</div>
+        <div class="fade-in">
           <div class="mb-2">Kepada Yth <br />Bapak/Ibu/Saudara/i</div>
-          <div class="mb-6 font-bold">Nama Tamu</div>
-          <div style="z-index: 999; position: absolute">
+          <div class="mb-6 font-bold text-xl">Nama Tamu</div>
+          <div style="z-index: 999; position: relative">
             <a
               id="btnBuka"
               href="#isiUndangan"
-              class="bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700"
+              class="bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >Buka Undangan</a
             >
           </div>
@@ -96,6 +198,26 @@
         </div>
       </div>
     </section>
+
+    <!-- Sound control button -->
+    <div class="sound-control hidden" id="soundControl" title="Toggle Sound">
+      <svg
+        id="soundIcon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M11 5L6 9H2V15H6L11 19V5Z" />
+        <path
+          id="soundWaves"
+          d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"
+        />
+      </svg>
+    </div>
+
     <script>
       document
         .getElementById("btnBuka")
@@ -103,14 +225,35 @@
           e.preventDefault();
 
           document.getElementById("isiUndangan").classList.remove("hidden");
+          document.getElementById("soundControl").classList.remove("hidden");
           document
-            .getElementById("btnBuka")
+            .getElementById("isiUndangan")
             .scrollIntoView({ behavior: "smooth" });
 
           const audio = document.getElementById("bg-audio");
+          audio.volume = 0.5; // Set volume to 50%
           audio.play();
         });
+
+      // Sound control functionality
+      const soundControl = document.getElementById("soundControl");
+      const soundIcon = document.getElementById("soundIcon");
+      const soundWaves = document.getElementById("soundWaves");
+      const audio = document.getElementById("bg-audio");
+      let isMuted = false;
+
+      soundControl.addEventListener("click", function () {
+        if (isMuted) {
+          audio.volume = 0.5;
+          soundWaves.style.display = "block";
+        } else {
+          audio.volume = 0;
+          soundWaves.style.display = "none";
+        }
+        isMuted = !isMuted;
+      });
     </script>
+
     <!-- isi undangan -->
     <div
       id="isiUndangan"
@@ -123,18 +266,14 @@
     >
       <section class="px-6 py-12 w-full relative">
         <div class="mx-auto w-full max-w-[26rem]">
-          <p class="mx-auto max-w-80 text-3xl font-bold">WELCOME TO</p>
-          <div
-            class="text-8xl font-bold font-accent text-blue-500"
-            data-aos="zoom-in"
-            data-aos-duration="3000"
-          >
+          <p class="mx-auto max-w-80 text-3xl font-bold slide-up">WELCOME TO</p>
+          <div class="text-8xl font-bold font-accent text-blue-500 bounce-in">
             1st
           </div>
-          <p class="mx-auto max-w-80 mb-6 text-3xl font-bold">
+          <p class="mx-auto max-w-80 mb-6 text-3xl font-bold slide-up">
             SAQYA BIRTHDAY PARTY
           </p>
-          <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="flex items-center justify-center gap-3 mb-6 fade-in">
             <div class="text-7xl font-bold">20</div>
             <div class="text-left text-2xl font-bold">
               <div>SELASA</div>
@@ -146,31 +285,26 @@
               <div>s.d SELESAI</div>
             </div>
           </div>
-          <div
-            id="countDown"
-            class="grid grid-cols-4 gap-2 mb-8"
-            data-aos="fade-up"
-            data-aos-duration="3000"
-          >
-            <div class="bg-blue-500 text-white p-3 rounded-md">
+          <div id="countDown" class="grid grid-cols-4 gap-2 mb-8 fade-in">
+            <div class="bg-blue-500 text-white p-3 rounded-md shadow-md">
               <div id="day" class="text-2xl">19</div>
               <div class="text-sm">Hari</div>
             </div>
-            <div class="bg-blue-500 text-white p-3 rounded-md">
+            <div class="bg-blue-500 text-white p-3 rounded-md shadow-md">
               <div id="hour" class="text-2xl">14</div>
               <div class="text-sm">Jam</div>
             </div>
-            <div class="bg-blue-500 text-white p-3 rounded-md">
+            <div class="bg-blue-500 text-white p-3 rounded-md shadow-md">
               <div id="minute" class="text-2xl">00</div>
               <div class="text-sm">Menit</div>
             </div>
-            <div class="bg-blue-500 text-white p-3 rounded-md">
+            <div class="bg-blue-500 text-white p-3 rounded-md shadow-md">
               <div id="second" class="text-2xl">00</div>
               <div class="text-sm">Detik</div>
             </div>
           </div>
 
-          <h2 class="font-latin text-4xl mb-4">Alamat</h2>
+          <h2 class="font-latin text-4xl mb-4 slide-up">Alamat</h2>
           <p class="mb-3">
             Jl. Pasar Lama. Nene Omo, Desa Katupat, Kec. Togean, Kab. Tojo
             Una-Una, Sulawesi Tengah 94686.
@@ -179,17 +313,32 @@
             href="https://maps.app.goo.gl/jjcuHVxGqinijE988"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-block mb-8 bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700"
-            >Buka Google Maps</a
+            class="inline-block mb-8 bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
+            <svg
+              class="inline-block mr-2"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+              ></path>
+              <circle cx="12" cy="9" r="2.5"></circle>
+            </svg>
+            Buka Google Maps
+          </a>
         </div>
       </section>
 
       <section class="px-6 py-12 w-full relative">
         <div class="mx-auto w-full max-w-[26rem]">
-          <h2 class="font-latin text-4xl mb-4">Our Memories</h2>
+          <h2 class="font-latin text-4xl mb-6 slide-up">Our Memories</h2>
 
-          <div class="galeri">
+          <div class="galeri relative">
             <img
               src="assets/ornament-11.png"
               style="
@@ -200,57 +349,57 @@
                 top: 80px;
               "
             />
-            <div class="grid grid-cols-2 gap-2 mb-2">
-              <div class="aspect-square overflow-hidden">
+            <div class="grid grid-cols-2 gap-3 mb-2">
+              <div class="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  class="size-full object-cover"
+                  class="size-full object-cover gallery-img"
                   src="image/gallery_11.jpg"
-                  alt=""
+                  alt="Saqya memory"
                   height="150"
                   width="150"
                 />
               </div>
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  class="size-full object-cover"
+                  class="size-full object-cover gallery-img"
                   src="image/gallery_10.jpg"
-                  alt=""
+                  alt="Saqya memory"
                   height="150"
                   width="150"
                 />
               </div>
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  class="size-full object-cover"
+                  class="size-full object-cover gallery-img"
                   src="image/gallery_6.jpg"
-                  alt=""
+                  alt="Saqya memory"
                   height="150"
                   width="150"
                 />
               </div>
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  class="size-full object-cover"
+                  class="size-full object-cover gallery-img"
                   src="image/gallery_7.jpg"
-                  alt=""
+                  alt="Saqya memory"
                   height="150"
                   width="150"
                 />
               </div>
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  class="size-full object-cover"
+                  class="size-full object-cover gallery-img"
                   src="image/gallery_8.jpg"
-                  alt=""
+                  alt="Saqya memory"
                   height="150"
                   width="150"
                 />
               </div>
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-square overflow-hidden rounded-lg shadow-md">
                 <img
-                  class="size-full object-cover"
+                  class="size-full object-cover gallery-img"
                   src="image/gallery_9.jpg"
-                  alt=""
+                  alt="Saqya memory"
                   height="150"
                   width="150"
                 />
@@ -260,15 +409,173 @@
         </div>
       </section>
 
+      <!-- RSVP Section -->
+      <section
+        class="px-6 py-12 w-full relative bg-blue-50 rounded-lg mx-4 my-6 shadow-lg"
+      >
+        <div class="mx-auto w-full max-w-[26rem]">
+          <h2 class="font-latin text-4xl mb-4 text-blue-600">RSVP</h2>
+          <p class="mb-4">Mohon konfirmasi kehadiran Anda:</p>
+
+          <form id="rsvpForm" class="text-left">
+            <div class="mb-4">
+              <label for="guestName" class="block mb-2 text-sm font-medium"
+                >Nama</label
+              >
+              <input
+                type="text"
+                id="guestName"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Nama Lengkap"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="attendance" class="block mb-2 text-sm font-medium"
+                >Kehadiran</label
+              >
+              <select
+                id="attendance"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              >
+                <option value="">Pilih</option>
+                <option value="hadir">Ya, saya akan hadir</option>
+                <option value="tidak">Maaf, saya tidak bisa hadir</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="numGuests" class="block mb-2 text-sm font-medium"
+                >Jumlah Tamu</label
+              >
+              <input
+                type="number"
+                id="numGuests"
+                min="1"
+                max="5"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Jumlah yang akan hadir"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="block mb-2 text-sm font-medium"
+                >Pesan/Ucapan</label
+              >
+              <textarea
+                id="message"
+                rows="3"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Tuliskan ucapan selamat atau pesan untuk Saqya"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-500 text-white py-3 px-6 rounded-xl hover:bg-blue-700 transition-all duration-300"
+            >
+              Kirim
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Gift Section -->
+      <section class="px-6 py-12 w-full relative">
+        <div class="mx-auto w-full max-w-[26rem]">
+          <h2 class="font-latin text-4xl mb-4">Gift Ideas</h2>
+          <p class="mb-4">
+            Jika Anda ingin memberikan hadiah untuk Saqya, berikut adalah
+            beberapa ide:
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <div class="text-blue-500 text-3xl mb-2">🧸</div>
+              <div class="font-bold">Mainan Edukatif</div>
+              <p class="text-sm">Usia 1-2 tahun</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <div class="text-blue-500 text-3xl mb-2">👕</div>
+              <div class="font-bold">Pakaian</div>
+              <p class="text-sm">Ukuran 18-24 bulan</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <div class="text-blue-500 text-3xl mb-2">📚</div>
+              <div class="font-bold">Buku Anak</div>
+              <p class="text-sm">Board books</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+              <div class="text-blue-500 text-3xl mb-2">🎨</div>
+              <div class="font-bold">Mainan Kreatif</div>
+              <p class="text-sm">Untuk pengembangan motorik</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         class="px-6 py-12 w-full min-h-[40rem] text-center flex flex-col justify-center items-center"
       >
         <p
-          class="mx-auto max-w-80 text-5xl font-latin font-bold text-black-500"
+          class="mx-auto max-w-80 text-5xl font-latin font-bold text-black-500 fade-in"
         >
           Terima Kasih<br />Atas perhatian anda,<br />Semoga kita bertemu<br />di
           acara tersebut
         </p>
+        <div class="mt-8">
+          <p class="text-xl mb-4">Share Invitation:</p>
+          <div class="flex justify-center gap-4">
+            <a
+              href="#"
+              class="bg-blue-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="bg-green-500 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="bg-blue-400 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
         <div
           class="ornament"
           style="
@@ -287,6 +594,7 @@
       </section>
     </div>
     <script>
+      // Countdown timer
       let tanggalAcara = new Date("May 20, 2025 14:00:00").getTime();
       let x = setInterval(function () {
         let sekarang = new Date().getTime();
@@ -300,10 +608,13 @@
         let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
         let detik = Math.floor((selisih % (1000 * 60)) / 1000);
 
-        document.getElementById("day").innerHTML = hari;
-        document.getElementById("hour").innerHTML = jam;
-        document.getElementById("minute").innerHTML = menit;
-        document.getElementById("second").innerHTML = detik;
+        document.getElementById("day").innerHTML =
+          hari < 10 ? "0" + hari : hari;
+        document.getElementById("hour").innerHTML = jam < 10 ? "0" + jam : jam;
+        document.getElementById("minute").innerHTML =
+          menit < 10 ? "0" + menit : menit;
+        document.getElementById("second").innerHTML =
+          detik < 10 ? "0" + detik : detik;
 
         if (selisih < 0) {
           clearInterval(x);
@@ -313,13 +624,28 @@
           document.getElementById("second").innerHTML = "00";
         }
       }, 1000);
-    </script>
-    <!-- lagu start -->
-    <audio loop id="bg-audio">
-      <source src="official-music-video-12345qwer.mp3" type="audio/mpeg" />
-    </audio>
-    <!-- lagu end -->
-    <script>
+
+      // RSVP form handling
+      document
+        .getElementById("rsvpForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById("guestName").value;
+          const attendance = document.getElementById("attendance").value;
+          const numGuests = document.getElementById("numGuests").value;
+          const message = document.getElementById("message").value;
+
+          // You would normally send this data to a server
+          // For this demo, we'll just show an alert
+          alert(`Terima kasih ${name}! RSVP Anda telah kami terima.`);
+
+          // Reset form
+          this.reset();
+        });
+
+      // Get URL parameter for guest name
       const urlParams = new URLSearchParams(window.location.search);
       const namaTamu = urlParams.get("nama");
 
@@ -330,5 +656,10 @@
         }
       }
     </script>
+    <!-- lagu start -->
+    <audio loop id="bg-audio">
+      <source src="official-music-video-12345qwer.mp3" type="audio/mpeg" />
+    </audio>
+    <!-- lagu end -->
   </body>
 </html>
