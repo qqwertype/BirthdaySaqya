@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saqya's 1st Birthday</title>
+    <title>Saqya 1st Birthday</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -176,11 +176,11 @@
             width="150"
           />
         </div>
-        <div class="mb-4 text-7xl font-bold font-accent fade-in">Saqya's</div>
+        <div class="mb-4 text-7xl font-bold font-accent fade-in">Saqya</div>
         <div class="mb-16 text-2xl slide-up">is turning one!</div>
         <div class="fade-in">
           <div class="mb-2">Kepada Yth <br />Bapak/Ibu/Saudara/i</div>
-          <div class="mb-6 font-bold text-xl">Nama Tamu</div>
+          <div id="namaTamu" class="mb-6 font-bold text-xl">Nama Tamu</div>
           <div style="z-index: 999; position: relative">
             <a
               id="btnBuka"
@@ -485,7 +485,7 @@
       <!-- Gift Section -->
       <section class="px-6 py-12 w-full relative">
         <div class="mx-auto w-full max-w-[26rem]">
-          <h2 class="font-latin text-4xl mb-4">Gift Ideas</h2>
+          <h2 class="font-latin text-4xl mb-4">Ide Hadiah</h2>
           <p class="mb-4">
             Jika Anda ingin memberikan hadiah untuk Saqya, berikut adalah
             beberapa ide:
@@ -650,7 +650,7 @@
       const namaTamu = urlParams.get("nama");
 
       if (namaTamu) {
-        const elemenNamaTamu = document.querySelector(".font-bold");
+        const elemenNamaTamu = document.getElementById("namaTamu");
         if (elemenNamaTamu) {
           elemenNamaTamu.textContent = decodeURIComponent(namaTamu);
         }
